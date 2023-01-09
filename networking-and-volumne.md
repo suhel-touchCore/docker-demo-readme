@@ -13,7 +13,7 @@ docker exec -it con1 /bin/sh
 
 ## Exercise 1: Create New Bridge Network
 
-### Example 1: Create Bridge
+### Scenario 1: Create Bridge
 ```bash
 docker network create --driver bridge tcsbridge
 docker container run -dt --name con3 --network tcsbridge alpine
@@ -21,7 +21,7 @@ docker container run -dt --name con4 --network tcsbridge alpine
 docker exec -it con4 /bin/sh
 ```
 
-### Example 2: Create Bridge
+### Scenario 2: Create Bridge
 ```bash
 docker network create --driver bridge --subnet 172.43.0.0/16 tcsbridge1
 ```
@@ -33,14 +33,14 @@ docker network connect tcsbridge1 con1
 
 ## Exercise 2: Docker Container Layer
 
-### Scenario1: Manual approach 
+### Scenario 1: Manual approach 
 ```bash
 docker container run -dt --name c1 ubuntu
 docker exec -it c1 /bin/bash
 apt update && apt install nginx
 ```
  
-### Scenario2: Create Custom Image, try below things on localhost
+### Scenario 2: Create Custom Image, try below things on localhost
 ```bash
 mkdir demo
 cd demo
@@ -60,7 +60,7 @@ docker history nginx:v1
 
 ## Exercise 3: Docker Volume and Layer
 
-### Scenario1: Data is not persist into container
+### Scenario 1: Data is not persist into container
 ```bash
 docker container run -dt --name c1 alpine
 docker exec -it c1 /bin/bash
@@ -68,20 +68,20 @@ create file
 docker container rm c1 –f
 ```
 
-### Scenario2: Create Volume
+### Scenario 2: Create Volume
 ```bash
 docker volume create tcsvolume
 docker volume ls
 docker container run -dt --name c1 -v tcsvolume: /var/www/html nginx:v1
 ```
-### Scenario3: Another way to create volume is using docker file
+### Scenario 3: Another way to create volume is using docker file
 ```Dockerfile
 FROM ubuntu
 RUN mkdir /myvolume
 RUN echo  “Another way to create volume” > /myvolume/hello.txt
 VOLUME /myvolume
 ```
-### Scenario4: Persist data using docker commit
+### Scenario 4: Persist data using docker commit
 ```bash
 docker container run -dt --name c1 alpine
 docker exec -it c1 sh
