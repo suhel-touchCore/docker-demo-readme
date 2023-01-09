@@ -136,6 +136,7 @@ RUN npm run build
 
 ### Hosting the Angular App with Nginx
 ```Dockerfile
+# build stage
 FROM node:19-alpine3.16 as builder
 
 RUN mkdir app
@@ -146,6 +147,7 @@ COPY . .
 RUN npm ci
 RUN npm run build
 
+# hosting stage
 FROM nginx:1.23.3-alpine-slim
 COPY --from=builder /app/dist/angular-todo-app /usr/share/nginx/html
 # needed for Single Page Apps
