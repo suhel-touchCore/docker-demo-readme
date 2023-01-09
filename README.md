@@ -27,6 +27,12 @@ docker build -t <image-name> <dockerfile-path>
 docker run -it --name <container-name> <image-name>
 ```
 
+### Cloning the GitHub Repository
+```bash
+git clone https://github.com/SuhelMakkad/angular-todo-app.git
+cd angular-todo-app
+```
+
 ## Building an Angular App with Docker
 
 ### Importing the ubuntu image
