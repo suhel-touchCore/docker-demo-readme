@@ -148,6 +148,8 @@ RUN npm run build
 
 FROM nginx:1.23.3-alpine-slim
 COPY --from=builder /app/dist/angular-todo-app /usr/share/nginx/html
+# needed for Single Page Apps
+COPY /nginx.conf /etc/nginx/conf.d/default.conf 
 ```
 
 ### Exposing the port to access the app
