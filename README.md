@@ -149,3 +149,8 @@ RUN npm run build
 FROM nginx:1.23.3-alpine-slim
 COPY --from=builder /app/dist/angular-todo-app /usr/share/nginx/html
 ```
+
+### Exposing the port to access the app
+```bash
+docker run -it --name angular-app -p 8081:80 angular-todo-app
+```
